@@ -1,0 +1,12 @@
+<div cdkDropList (cdkDropListDropped)="drop($event)" *ngFor="let n of nodes" class="divitem">
+  <ion-item detail="false" lines="none" (click)="n.isExpanded = !n.isExpanded; clickNode(n)" 
+          [ngClass]="{active: n.isExpanded}" cdkDrag>
+    <span class="spanCursor" *cdkDragPlaceholder>
+      <ion-icon slot="start" *ngIf="n.sub" [color]="n.isExpanded ? 'primary' : 'gray'" [name]="n.isExpanded ? 'ios-arrow-down' : 'ios-arrow-forward'"></ion-icon>
+    </span>
+    <ion-icon *ngIf="n.icon" [name]="(n.isExpanded && n.iconExpanded) ? n.iconExpanded : n.icon" class="iconNode" color="dark"></ion-icon>           
+    {{n.title}}                         
+  </ion-item>
+  <!-- Recursive call -->
+  <app-tree-node [nodes]="n.sub"  *ngIf="n.sub" [hidden]="!n.isExpanded" ></app-tree-node>   
+</div>
