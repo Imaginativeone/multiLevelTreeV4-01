@@ -23,6 +23,10 @@ export class TreeNodeComponent implements OnInit {
     }
   }
 
+  handleDragStart(iEvent, iNode) {
+    console.log('dragstart', event);
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.nodes, event.previousIndex, event.currentIndex);
   }
