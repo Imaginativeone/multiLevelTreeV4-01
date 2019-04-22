@@ -27,7 +27,12 @@ export class TreeNodeComponent implements OnInit {
     console.log('dragstart', event);
   }
 
+  handleDragOver(iEvent, iNode) {
+    console.log('dragover', event);
+  }
+
   drop(event: CdkDragDrop<string[]>) {
+    console.log('drop event', event);
     moveItemInArray(this.nodes, event.previousIndex, event.currentIndex);
   }
 
